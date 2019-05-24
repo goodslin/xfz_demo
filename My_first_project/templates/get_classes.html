@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div></div>
+    <div>
+        <table border="1">
+            <form action="/add_classes.html" method="post" id="addStu">
+                <input type="text">
+                <a href="#" onclick="add_Student()" id="Add">添加</a>
+            </form>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>老师</th>
+                <th>操作</th>
+            </tr>
+            {% for row in cls_list %}
+                <tr nid="{{ row.id }}">
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.title }}</td>
+                    <td>
+                        {% for item in row.m.all %}
+                            <span>{{ item.name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="/del_classes.html?nid={{ row.id }}">删除</a>
+                        |
+                        <a onclick="removeStudent(this)" href="#">Ajax删除</a>
+                        |
+                        <a href="/edit_classes.html?nid={{ row.id }}">编辑</a>
+                        |
+                        <a href="/set_teacher.html?nid={{ row.id }}">分配老师</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+<script src="/static/jQuery.js"></script>
+<script>
+    function removeStudent(ths) {
+        var nid = $(ths).parent().parent().attr('nid');
+        $.ajax({
+            url: '/ajax1.html',
+            type: 'GET',
+            data: {nid:nid},
+            success:function(arg){
+                if (arg == '成功'){
+                    {#window.location.reload();#}
+                    $(ths).parent().parent().remove();
+                }else {
+                    alert(arg);
+                }
+            }
+        })
+    }
+
+    function add_Student() {
+
+    }
+</script>
+</html>

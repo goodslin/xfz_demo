@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="fm" action="f1.html" method="post">
+        <div>
+
+        </div>
+        <p>用户名:{{ obj.user }}{{ obj.errors.user.0 }}</p>
+        <p>密码:{{ obj.pwd }}{{ obj.errors.pwd.0 }}</p>
+        <p>年龄:{{ obj.age }}{{ obj.errors.age.0 }}</p>
+        <p>邮箱:{{ obj.email }}{{ obj.errors.email.0 }}</p>
+        <p><input type="submit" value="提交"></p>
+{#        <input type="button" value="Ajax提交" onclick="submitAjaxForm();">#}
+    </form>
+</body>
+
+<script src="/static/jQuery.js"></script>
+
+{#<script>#}
+{#function submitAjaxForm() {#}
+{#    $.ajax({#}
+{#        url: '/f1.html',#}
+{#        type: 'POST',#}
+{#        data: $('#fm').serialize(),#}
+{#        success: function (arg) {#}
+{#            console.log(arg);#}
+{#        }#}
+{#    })#}
+{#}#}
+{#</script>#}
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<style>
+    .btn{
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #2b669a;
+        color: white;
+    }
+</style>
+<body>
+    <h1>Ajax全套</h1>
+    <h3>jQurey Ajax</h3>
+    <div>
+        <a class="btn" onclick="AjaxSubmit1()">点点点1</a>
+        <a class="btn" onclick="AjaxSubmit2()">点点点2</a>
+    </div>
+
+    <h3>jQuery Ajax请求</h3>
+    <div>
+        <a class="btn" onclick="AjaxSubmit3()">点点点3</a>
+        <a class="btn" onclick="AjaxSubmit4()">点点点4</a>
+    </div>
+
+    <h3>jQuery Ajax请求</h3>
+    <div>
+        <h6>iframe</h6>
+{#        <iframe src="http://www.autohome.com.cn" style="height: 800px; width: 1200px;" frameborder="0"></iframe>#}
+        <iframe id="iframe1" name="ifra1" frameborder="0" style="display: none"></iframe>
+        <form id="fm1" action="/upload_img.html" method="post" enctype="multipart/form-data" target="ifra1">
+            <input type="file" name="k3" onchange="uploadFile();">
+            <h3>预览</h3>
+            <div>
+                <div id="preview"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="/static/js/jQuery.js"></script>
+<script>
+    function AjaxSubmit1() { 
+        $.ajax({
+            url: '/ajax1.html',
+            type: 'GET',
+            data: {'p':123},
+            success:function (arg) {
+                console.log(arg);
+            }
+        })
+    }
+    
+    function AjaxSubmit2() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                //接收完毕服务器返回数据
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.open('GET','/ajax1.html?p=123');
+        xhr.send('');
+    }
+
+        function AjaxSubmit3() {
+        $.ajax({
+            url: '/ajax1.html',
+            type: 'GET',
+            data: {'p':123},
+            success:function (arg) {
+                console.log(arg);
+            }
+        })
+    }
+
+        function AjaxSubmit4() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                //接收完毕服务器返回数据
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.open('POST','/ajax1.html');
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset-UTF-8');
+        xhr.send('p=456');
+    }
+
+    function uploadFile(){
+        document.getElementById('iframe1').onload = reloadIframe1;
+        document.getElementById('fm1').submit();
+    }
+
+    function reloadIframe1() {
+        var content = this.contentWindow.document.body.innerHTML;
+        var obj = JSON.parse(content);
+        console.log(obj.data);
+        var tag = document.createElement('img');
+        tag.src = obj.data;
+        $('#preview').empty().append(tag);
+    }
+
+</script>
+</html>

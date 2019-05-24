@@ -1,0 +1,20 @@
+{% extends "learn_logs/base.html" %}
+
+{% block content %}
+
+    <p>标题：</p>
+
+    <ul>
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'learn_logs:topic' topic.id %}">{{ topic }}</a>
+        </li>
+    {% empty %}
+        <li>对不起，还未添加项目。</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'learn_logs:new_topic' %}">添加新主题</a>
+
+{% endblock content %}
+

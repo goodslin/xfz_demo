@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script>
+    <script src="{% static 'myajax.js' %}"></script>
+    <script>
+        $(function () {
+            $("#submit").click(function (event) {
+                event.preventDefault();
+                var email = $("input[name='email']").val();
+                var money = $("input[name='money]").val();
+
+                myajax.post({
+                    'url': '/app02/transfer/',
+                    'data': {
+                        'email': email,
+                        'money': money
+                    },
+                    'success': function (data) {
+                        // 状态码为200则调用success回调函数
+                        console.log(data);
+                    },
+                    'fail': function (error) {
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+<h1>中国工商银行-转账</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tbody>
+        <tr>
+            <td>转给：</td>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td>金额：</td>
+            <td><input type="text" name="money"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="提交"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

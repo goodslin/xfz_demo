@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/login_action/" method="post">
+    <h2>发布会管理</h2>
+    <input type="text" name="username" placeholder="用户名"><br>
+    <input type="password" name="password" placeholder="密码"><br>
+    {{ error }}<br>
+    <button type="submit" id="btn">提交</button>
+    {% csrf_token %}
+</form>
+</body>
+</html>

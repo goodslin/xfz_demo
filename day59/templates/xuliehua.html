@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id="tb">
+        哈哈哈哈
+    </table>
+</body>
+<script src="/static/jQuery.js"></script>
+<script>
+    $(function () {
+        initData();
+    });
+    function initData() {
+        $.ajax({
+            url: '/get_data',
+            type: 'POST',
+            success:function (arg) {
+                $('#tb').append(arg);
+            }
+        })
+    }
+</script>
+</html>

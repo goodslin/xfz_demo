@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<style>
+    .nav{
+        line-height: 40px;
+        width: 100%;
+        background-color: indigo;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .left{
+        width: 20%;
+        min-height: 600px;
+        overflow: auto;
+        background-color: beige;
+    }
+
+    .manage{
+        text-align: center;
+        padding: 3px 0px;
+        margin: 10px 0px;
+        font-size: 18px;
+    }
+
+    .content{
+        width: 70%;
+        min-height: 600px;
+        {#background-color: gainsboro;#}
+    }
+
+    .left, .content{
+        float: left;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    h1, h4{
+        text-align: center;
+    }
+</style>
+<body>
+
+<div class="outer">
+    <div class="nav">标题</div>
+
+    <div class="left">
+        <div class="student manage"><a href="/student/">学生管理</a></div>
+        <div class="teacher manage"><a href="#">老师管理</a></div>
+        <div class="course manage"><a href="#">课程管理</a></div>
+        <div class="classes manage"><a href="#">班级管理</a></div>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>

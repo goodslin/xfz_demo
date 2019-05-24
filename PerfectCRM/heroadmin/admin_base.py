@@ -1,0 +1,2 @@
+class BaseHeroAdmin(object):
+    pass

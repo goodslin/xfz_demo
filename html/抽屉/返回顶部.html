@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bigger</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .outer{
+            height: 350px;
+            width: 350px;
+            border: dashed 5px cornflowerblue;
+        }
+        .outer .small_box{
+            position: relative;
+        }
+        .outer .small_box .float{
+            height: 175px;
+            width: 175px;
+            background-color: darkgray;
+            opacity: 0.4;
+            fill-opacity: 0.4;
+            position: absolute;
+            display: none;
+
+        }
+
+        .outer .big_box{
+            height: 400px;
+            width: 400px;
+            overflow: hidden;
+            position:absolute;
+            left: 360px;
+            top: 0px;
+            z-index: 1;
+            border: 5px solid rebeccapurple;
+            display: none;
+
+
+        }
+        .outer .big_box img{
+            position: absolute;
+            z-index: 5;
+        }
+
+
+    </style>
+</head>
+<body>
+
+        <div class="outer">
+            <div class="small_box">
+                <div class="float"></div>
+                <img src="small.png">
+
+            </div>
+            <div class="big_box">
+                <img src="big.png">
+            </div>
+
+        </div>
+
+
+<script src="jQuery.js"></script>
+<script>
+
+    $(function(){
+
+          $(".small_box").mouseover(function(){
+
+              $(".float").css("display","block");
+              $(".big_box").css("display","block")
+
+          });
+          $(".small_box").mouseout(function(){
+
+              $(".float").css("display","none");
+              $(".big_box").css("display","none")
+
+          });
+
+          $(".small_box").mousemove(function(e){
+
+              var _event=e || window.event;
+
+              var float_width=$(".float").width();
+              var float_height=$(".float").height();
+
+              console.log(float_height,float_width);
+
+              var float_height_half=float_height/2;
+              var float_width_half=float_width/2;
+              console.log(float_height_half,float_width_half);
+
+
+               var small_box_width=$(".small_box").height();
+               var small_box_height=$(".small_box").width();
+
+
+
+//  鼠标点距离左边界的长度与float应该与左边界的距离差半个float的width,height同理
+              var mouse_left=_event.clientX-float_width_half;
+              var mouse_top=_event.clientY-float_height_half;
+
+              if(mouse_left<0){
+                  mouse_left=0
+              }else if (mouse_left>small_box_width-float_width){
+                  mouse_left=small_box_width-float_width
+              }
+
+
+              if(mouse_top<0){
+                  mouse_top=0
+              }else if (mouse_top>small_box_height-float_height){
+                  mouse_top=small_box_height-float_height
+              }
+
+               $(".float").css("left",mouse_left+"px");
+               $(".float").css("top",mouse_top+"px")
+
+               var percentX=($(".big_box img").width()-$(".big_box").width())/ (small_box_width-float_width);
+               var percentY=($(".big_box img").height()-$(".big_box").height())/(small_box_height-float_height);
+
+              console.log(percentX,percentY)
+
+               $(".big_box img").css("left", -percentX*mouse_left+"px")
+               $(".big_box img").css("top", -percentY*mouse_top+"px")
+          })
+    })
+
+
+</script>
+</body>
+</html>

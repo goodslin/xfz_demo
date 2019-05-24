@@ -1,0 +1,403 @@
+@import "init.scss";
+@import "constants.scss";
+
+body {
+  background: #D7EDEA;
+  min-height: 900px;
+}
+
+.header {
+  width: 100%;
+  height: $navHeight;
+  background: #3a3a3a;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    width: $pageWidth;
+    height: 100%;
+    //background: gray;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .logo-box {
+      width: 140px;
+      height: 49px;
+      background: url("https://www.xfz.cn/static/build/images/logo.png") no-repeat;
+      margin-top: 8px;
+      float: left;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .nav {
+      margin-left: 120px;
+      float: left;
+
+      li {
+        float: left;
+        margin-right: 50px;
+        line-height: $navHeight;
+        height: $navHeight;
+        box-sizing: border-box;
+
+        &.active {
+          border-bottom: 5px solid #f22f23;
+          //background: #000;
+        }
+
+        a {
+          color: #fff;
+        }
+
+      }
+    }
+
+    .auth-box {
+      float: right;
+      line-height: $navHeight;
+      height: $navHeight;
+      color: #fff;
+
+      .iconfont {
+        color: #fff;
+        font-size: 25px;
+      }
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  margin-top: $navHeight + 20px;
+
+  .wrapper {
+    width: $pageWidth;
+    margin: 0 auto;
+    //background: goldenrod;
+    overflow: hidden;
+
+    .news-contact-wrapper {
+      padding: 20px;
+      background: #fff;
+      width: $mainBoxWidth;
+      float: left;
+      box-sizing: border-box;
+
+      h1 {
+        color: #212121;
+        font-size: 24px;
+        line-height: 34px;
+        padding-bottom: 20px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .author-share {
+        font-size: 14px;
+        vertical-align: top;
+
+
+        .author {
+          float: left;
+
+          span {
+            margin-right: 10px;
+          }
+
+          .name_time {
+            color: #878787;
+          }
+
+          .article-type {
+            color: #fff;
+            padding: 0 6px;
+            background: #F6766A;
+          }
+        }
+
+        .share {
+          float: right;
+
+          i {
+            float: left;
+            font-style: normal;
+            line-height: 30px;
+            color: #696969;
+            margin-right: 10px;
+            font-size: 14px;
+          }
+
+          .weixin {
+            float: left;
+            background: url("https://www.xfz.cn/static/build/images/share.png") no-repeat;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 220%;
+            cursor: pointer;
+            margin-right: 10px;
+          }
+
+          .weibo {
+            float: left;
+            background: url("https://www.xfz.cn/static/build/images/share.png") no-repeat;
+            background-position: -37px 0;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 220%;
+            cursor: pointer;
+            margin-right: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main {
+  .wrapper {
+    .sidebar-wrapper {
+      float: right;
+      width: 360px;
+      height: 550px;
+      background: #fff;
+
+      .title-group {
+        padding: 20px;
+        overflow: hidden;
+
+        .title {
+          float: left;
+          font-size: 16px;
+          font-weight: 600;
+          color: $themeColor;
+        }
+
+        .more {
+          float: right;
+          font-size: 14px;
+          color: #878787;
+        }
+      }
+
+      .advertise-group {
+        img {
+          width: 100%;
+        }
+      }
+
+      .focus-group {
+        padding: 0 20px;
+        overflow: hidden;
+
+        .left-group {
+          width: 190px;
+          float: left;
+
+          li {
+            width: 100%;
+            height: 50px;
+            background: url("../../dist/images/side-icon.png");
+            background-repeat: no-repeat;
+            background-size: 25%;
+            margin-bottom: 20px;
+            line-height: 50px;
+            overflow: hidden;
+
+            a {
+              float: left;
+              margin-left: 65px;
+              font-size: 14px;
+              color: #878787;
+            }
+          }
+
+          .zhihu {
+            background-position: 0 0;
+          }
+
+          .weibo {
+            background-position: 0 -62px;
+          }
+
+          .toutiao {
+            background-position: 0 -124px;
+          }
+        }
+
+        .right-group {
+          float: right;
+          width: 108px;
+          background: url("../../dist/images/xfz-school-wechat-share.png");
+          background-size: 100%;
+          background-repeat: no-repeat;
+
+          .desc {
+            margin-top: 110px;
+            color: #878787;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  left: 0;
+  right: 0;
+  bottom: -37px;
+  padding-top: 20px;
+
+  font-size: 14px;
+  color: #C9C9C9;
+
+  .top-group {
+    background: #555e67;
+    height: 100px;
+
+    .top-inner-group {
+      width: $pageWidth;
+      margin: 0 auto;
+      //overflow: hidden;
+      padding-top: 25px;
+      position: relative;
+
+      .logo-box {
+        width: 168px;
+        height: 54px;
+        float: left;
+        background: url("https://www.xfz.cn/static/build/images/logo-test.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      .detail-group {
+        float: left;
+        margin-left: 84px;
+
+        .line1 {
+          .links {
+            float: left;
+            overflow: hidden;
+
+            li {
+              float: left;
+              padding: 0 10px;
+              border-right: 1px solid #C9C9C9;
+
+              &:first-of-type {
+                padding-left: 0;
+              }
+
+              &:last-of-type {
+                border: none;
+              }
+
+              a {
+                color: #C9C9C9;
+              }
+            }
+          }
+
+          .about-us {
+            float: left;
+            margin-left: 40px;
+
+            .title {
+              float: left;
+            }
+
+            .social-group {
+              overflow: hidden;
+              float: left;
+              color: #fff;
+
+              li {
+                float: left;
+              }
+
+              .weixin {
+                margin-left: 25px;
+                background: url("../../dist/images/wechat-icon-grey.png");
+                background-repeat: no-repeat;
+                background-size: 30%;
+                cursor: pointer;
+
+                .wx-code {
+                  width: 204px;
+                  height: 204px;
+                  background: url("../../dist/images/xfz-wechat-share.png");
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  position: absolute;
+                  top: -190px;
+                  right: 340px;
+                  display: none;
+                }
+
+                .text {
+                  margin-left: 23px;
+                }
+
+                &:hover .wx-code {
+                  display: block;
+                }
+              }
+
+              .weibo {
+                margin-left: 25px;
+                background: url("../../dist/images/weibo-icon-grey.png");
+                background-repeat: no-repeat;
+                background-size: 17%;
+
+                .text {
+                  margin-left: 23px;
+                }
+
+                a {
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+
+        .line2 {
+          margin-top: 32px;
+
+          .address {
+            float: left;
+          }
+
+          .content {
+            float: left;
+            margin-left: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-group {
+    background: #383e44;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #C9C9C9;
+  }
+}

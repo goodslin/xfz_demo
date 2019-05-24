@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/ajax/" method="post" id="fm" novalidate>
+        {% csrf_token %}
+        {{ obj.as_p }}
+        <input type="submit" value="Ajax提交" id="btn">
+    </form>
+    <script src="/static/jQuery.js"></script>
+    <script>
+        $(function () {
+            $('btn').click(function () {
+                $.ajax({
+                    url: '/ajax/',
+                    type: 'POST',
+                    data: $(#fm).serialize(),
+                    success:function (arg) {
+                        //arg:状态，错误信息
+                        console.log(arg);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

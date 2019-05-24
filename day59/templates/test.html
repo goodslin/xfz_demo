@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/test/" novalidate method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ txt }}</p>
+        <p>{{ obj.user.label }}{{ obj.user }}</p>
+        <p>{{ obj.age.label }}{{ obj.age }}{{ obj.errors.age.0 }}</p>
+        <p>{{ obj.email.label }}{{ obj.email }}</p>
+        <p>{{ obj.image.label }}{{ obj.image }}</p>
+        <p>{{ obj.city.label }}{{ obj.city }}</p>
+        <p>{{ obj.hobby.label }}{{ obj.hobby }}</p>
+        <p>{{ obj.xdd.label }}{{ obj.xdd }}</p>
+        <p>{{ obj.address.label }}{{ obj.address }}</p>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

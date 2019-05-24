@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .div1, .div2, .div3, .div4{
+            width: 100px;
+            height: 100px;
+        }
+
+        .div1{
+            background-color: green;
+        }
+
+        .div2{
+            background-color: gold;
+        }
+
+        .div3{
+            background-color: peru;
+        }
+
+        .div4{
+            background-color: #2559a4;
+        }
+    </style>
+</head>
+<body>
+
+<!--<div id="abc" onclick="func1(this)">事件绑定1</div>-->
+<!--<div id="id123">事件绑定2</div>-->
+<form action="">
+    <div class="div1">
+    <button onclick="add()">add</button>
+        div1
+    </div>
+    <div class="div2">
+    <button onclick="del()">del</button>
+        div2
+    </div>
+    <div class="div3">div3</div>
+    <div class="div4">div4</div>
+</form>
+</body>
+<script>
+
+    // function func1(self) {
+    //     console.log(self.id)
+    // }
+    //
+    // var ele=document.getElementById("id123").onclick=function(){
+    //     console.log(this.id)
+    // }
+
+    function add() {
+        var ese=document.createElement("p");
+        ese.innerHTML="hello lin";
+        var father=document.getElementsByClassName("div1")[0];
+        father.appendChild(ese)
+    }
+
+    function del() {
+        var father=document.getElementsByClassName("div2")[0];
+
+    }
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+{% extends "learn_logs/base.html" %}
+
+{% block content %}
+
+    <p>标题:{{ topic }}</p>
+
+    <p>输入:</p>
+    <p>
+        <a href="{% url 'learn_logs:new_entry' topic.id %}">添加新输入</a>
+    </p>
+    <ul>
+    {% for entry in entries %}
+        <li>
+            <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+        <p>
+            <a href="{% url 'learn_logs:edit_entry' entry.id %}">编辑输入</a>
+        </p>
+        </li>
+    {% empty %}
+        <li>
+            对不起，这里还没添加内容。
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}

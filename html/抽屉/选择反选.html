@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="selectAll()">全选</button>
+<button onclick="Cancle()">取消</button>
+<button onclick="reverse()">反选</button>
+<hr>
+<table border="1px">
+    <tr>
+        <td><input type="checkbox"></div>
+        <td>1111</td>
+        <td>1111</td>
+        <td>1111</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>2222</td>
+        <td>2222</td>
+        <td>2222</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>3333</td>
+        <td>3333</td>
+        <td>3333</td>
+    </tr>
+</table>
+</body>
+
+<script>
+
+    function selectAll() {
+        var inputs = document.getElementsByTagName("input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            input.checked = true;
+        }
+    }
+
+    function Cancle() {
+        var inputs = document.getElementsByTagName("input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            input.checked = false;
+        }
+    }
+
+    function reverse() {
+        var inputs = document.getElementsByTagName("input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+
+            input.checked=!input.checked;
+            // if (input.checked) {
+            //     input.checked = false;
+            // } else {
+            //     input.checked = true;
+            // }
+        }
+    }
+
+</script>
+
+</html>

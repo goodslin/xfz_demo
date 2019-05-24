@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block page_css %}
+    <link rel="stylesheet" href="/heroadmin/static/plugins/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="/heroadmin/static/plugins/layui-v2.4.5/layui/layui.js">
+
+{% endblock %}
+{% block body %}
+
+    <table class="layui-table" lay-skin="line">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        {% for app_name,app_tables in site.enabled_admin.items %}
+
+            <fieldset class="layui-elem-field layui-field-title site-title">
+                <legend>{{ app_name }}</legend>
+            </fieldset>
+
+            <tbody>
+            {% for model_name in app_tables %}
+                <tr>
+                    <td><a href="{% url 'table_obj_list' app_name model_name %}">{{ model_name }}</a></td>
+                    <td>增加</td>
+                    <td>修改</td>
+                </tr>
+
+            {% endfor %}
+        {% endfor %}
+        <tr>
+            <td>贤心</td>
+            <td>2016-11-29</td>
+            <td>人生就像是一场修行</td>
+        </tr>
+        <tr>
+            <td>许闲心</td>
+            <td>2016-11-28</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>sentsin</td>
+            <td>2016-11-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+
+{% block script %}
+    <script>
+        layui.use('form', function () {
+            var form = layui.form;
+            form.render();
+        });
+    </script>
+{% endblock %}

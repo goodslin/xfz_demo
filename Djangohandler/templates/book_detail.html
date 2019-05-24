@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table>
+<thead>
+    <tr>
+        <th>序号</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>操作</th>
+    </tr>
+</thead>
+<tbody>
+{% for i in row %}
+    <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.name }}</td>
+    <td>{{ i.author }}</td>
+    <td><a href="{% url 'del_book_detail' %}?id={{ i.id }}">删除</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+
+{% endblock %}

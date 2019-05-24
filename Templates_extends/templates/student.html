@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for student in student_list %}
+        <h4>{{ student }}</h4>
+    {% endfor %}
+{% endblock %}
+
+{#ORM --- object relation mapping#}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <title>Title</title>
+    {% load myTag %}
+</head>
+<body>
+{#    <h1>Hello {{ d.name }}</h1>#}
+{#    <h1>Hello {{ c.name }}</h1>#}
+<!--
+{% if d.age > 18 %}
+
+    <h1>hello {{ d.name }}</h1>
+
+{% endif %}
+
+{% for name in l %}
+    {{ forloop.counter0 }}:{{ name }}
+{% endfor %}
+
+{% for name in l %}
+    {% if forloop.first %}
+        <li class="first">
+            {% else %}
+        <li>
+    {% endif %}
+    {{ name }}
+    </li>
+    {% empty %}
+    <h1>没有相关文章</h1>
+{% endfor %}
+
+<form action="{% url 'xl' %}" method="post">
+    <p>用户名 <input type="text" name="user"></p>
+    <p>密码 <input type="text" name="pwd"></p>
+    <p><input type="submit" value="提交"></p>
+    {% csrf_token %}
+</form>
+-->
+
+{{ d.age|filter_multi:3 }}
+{% simple_tag_multi 3 5 %}
+
+</body>
+<script src="{% static 'jQuery.js' %}"></script>
+<script>
+    $("h1").css('color', 'red');
+    $(".first").css('color', 'green');
+</script>
+</html>
