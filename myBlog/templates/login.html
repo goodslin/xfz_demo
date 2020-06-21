@@ -1,102 +1,46 @@
+{%load static%}
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="/static/plugins/fontawesome/css/fontawesome.css"/>
-    <link rel="stylesheet" href="/static/css/edmure.css"/>
-    <link rel="stylesheet" href="/static/css/commons.css"/>
-    <link rel="stylesheet" href="/static/css/account.css"/>
+    <title>登录</title>
+    <link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
+    <link rel="stylesheet" href="{%static 'css/log.css' %}">
+    <link rel="stylesheet" href="{%static 'css/semantic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 </head>
-<body>
-<div class="login">
-    <div style="font-size: 25px; font-weight: bold;text-align: center;">
-        用户登陆
-    </div>
-    <form id="fm" method="POST" action="/login.html">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">用户名</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名">
+<body class="login">
+    <div class="ui center aligned grid" style="margin-top: 200px">
+        <div class="ui six wide column">
+            <h1 class="ui teal header">Ericam blog-登录</h1>
+            <div class="ui segment">
+                <div class="ui content">
+    <form class="ui large form" method="post" action="{%url 'login'%}">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" name="username" placeholder="请输入用户名">
+          </div>
         </div>
-        <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" name="password" placeholder="请输入密码">
+          </div>
         </div>
-        <div class="form-group">
-            <label for="password">验证码</label>
+        {{ error }}<br>
+        <a class="pull-right field" href="{% url 'forget' %}">忘记密码</a>
+        <button class="ui fluid large teal button" type="submit">登陆</button>
+      </div>
 
-            <div class="row">
-                <div class="col-xs-7">
-                    <input type="text" class="form-control" name="check_code" id="check_code" placeholder="请输入验证码">
-                </div>
-                <div class="col-xs-5">
-                    <img id="check_code_img" src="/check_code.html" onclick="changeImg(this);">
-                </div>
-            </div>
-
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1" name="rmb"> 一个月内自动登陆
-            </label>
-
-            <div class="right">
-                <a href="#">忘记密码？</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-3">
-                <a id="submit" class="btn btn-default">登 陆</a>
-            </div>
-            <div class="col-xs-9" style="padding-left: 0;">
-                <div class="alert alert-danger hide">
-                    <span style="padding: 0 5px 0 5px;display: inline-block;font-size: 14px">
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                    </span>
-                    <span id="error_msg" style="font-size: 12px;"></span>
-                </div>
-            </div>
-        </div>
-
+      <div class="ui error message"></div>
     </form>
-    <script src="/static/js/jQuery.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            bindLogin();
-        });
 
-        function changeImg(ths) {
-            ths.src = ths.src + '?';
-        }
-
-        function bindLogin() {
-            $('#submit').click(function () {
-                var $msg = $('#error_msg');
-                $msg.parent().addClass('hide');
-                $.ajax({
-                    url: '/login.html',
-                    type: 'POST',
-                    data: $('#fm').serialize(),
-                    dataType: 'JSON',
-                    success: function (arg) {
-                        if (arg.status) {
-                            location.href = '/'
-                        } else {
-                            $msg.parent().removeClass('hide');
-                            $msg.text(arg.message);
-                            var img = $('#check_code_img')[0];
-                            img.src = img.src + '?';
-                            $('#password,#check_code').val('');
-                        }
-
-                    }
-                })
-
-            })
-        }
-    </script>
-</div>
+    <div class="ui message">
+      New to us? <a href="{% url 'register' %}">注册</a>
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
